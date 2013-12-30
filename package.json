@@ -1,0 +1,27 @@
+{
+  "name": "recipedj",
+  "version": "0.0.0",
+  "description": "recipedj app ",
+  "main": "web.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joytafty/recipedj.git"
+  },
+  "keywords": [
+    "recipe",
+    "node",
+    "backbone"
+  ],
+  "author": "joytafty",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joytafty/recipedj/issues"
+  },
+  "dependencies": {
+    "logfmt": "~0.18.1",
+    "express": "~3.4.7"
+  }
+}
