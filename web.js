@@ -63,6 +63,8 @@ var fs = require('fs');
 // exports.start = start;
 // Create app
 var app = express();
+http.createServer(app);
+
 app.use(logfmt.requestLogger());
 
 app.get('/', function(req, res) {
