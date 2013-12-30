@@ -13,6 +13,7 @@ var express = require('express'),
  path = require('path');
  
 var fs = require('fs');
+var http = require('http');
 
 // function handleStaticPages(pathName, res) {
 // 	var ext = path.extname(pathName);
