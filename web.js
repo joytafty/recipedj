@@ -14,7 +14,10 @@ var app = express.createServer();
 app.use(logfmt.requestLogger());
 
 app.get('/', function(req, res) {
-	res.sendfile(__dirname + '/index.html');
+	res.sendfile(__dirname + '/index.html');	
+});
+app.get('/test', function(req,res){
+	res.sendfile(__dirname + '/test.html');
 });
 
 var port = process.env.PORT || 5000;
