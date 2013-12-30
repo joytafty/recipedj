@@ -17,7 +17,7 @@ app.get('/', function(req, res) {
 	res.sendfile(__dirname + '/index.html');	
 });
 app.get('/test', function(req,res){
-	res.sendfile(__dirname + '/test.html');
+	res.sendfile(__dirname + '/templates/test.html');
 });
 
 var port = process.env.PORT || 5000;
