@@ -14,26 +14,26 @@ var express = require('express'),
  
 var fs = require('fs');
 
-// function handleStaticPages(pathName, res) {
-// 	var ext = path.extname(pathName);
-// 	switch(ext) {
-// 		case '.css':
-// 			res.writeHead(200, {'Content-Type' : 'text/css'});
-// 			fs.readFile('.' + pathName, 'utf8', function(err, fd){
-// 				res.end(fd);
-// 			});
-// 			console.log('Routed for CSS ' + pathName + ' Successfully\n');
-// 		break;
-// 		case '.js';		
-// 			res.writeHead(200, {'Content-Type':, 'text/javascript'});
-// 			fs.readFile('./' + pathName, 'utf8', function(err, fd){
-// 				res.end(fd);
-// 			});
-// 			console.log('Routed for Javascript ' + pathName + ' Successfully\n');
-// 		break;
-// 	}
+function handleStaticPages(pathName, res) {
+	var ext = path.extname(pathName);
+	switch(ext) {
+		case '.css':
+			res.writeHead(200, {'Content-Type' : 'text/css'});
+			fs.readFile('.' + pathName, 'utf8', function(err, fd){
+				res.end(fd);
+			});
+			console.log('Routed for CSS ' + pathName + ' Successfully\n');
+		break;
+		case '.js';		
+			res.writeHead(200, {'Content-Type':, 'text/javascript'});
+			fs.readFile('./' + pathName, 'utf8', function(err, fd){
+				res.end(fd);
+			});
+			console.log('Routed for Javascript ' + pathName + ' Successfully\n');
+		break;
+	}
 
-// }
+}
 
 // function start(route, handle) {
 // 	function onRequest(req, res) {
