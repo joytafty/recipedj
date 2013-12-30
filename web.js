@@ -62,14 +62,15 @@ var fs = require('fs');
 
 // exports.start = start;
 // Create app
-var app = express.createServer();
+var app = express();
 app.use(logfmt.requestLogger());
 
 app.get('/', function(req, res) {
-	res.sendfile(__dirname + '/index.html');		
 	console.log(__dirname);
+	res.sendfile(__dirname + '/index.html');		
 });
 app.get('/test', function(req,res){
+	console.log(__dirname);
 	res.sendfile(__dirname + '/templates/test.html');
 });
 
