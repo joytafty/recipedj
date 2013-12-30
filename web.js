@@ -1,6 +1,6 @@
 var http = require('http');
 var port = process.env.PORT || 5000;
-http.CreateServer(function(req, res) {
+http.createServer(function(req, res) {
 	res.writeHead(200);
 	res.write("Welcome to recipeDJ WebApp");
 	res.end(); 
