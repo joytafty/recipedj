@@ -26,6 +26,8 @@
     "coffee-script": "~1.6.3",
     "http-server": "~0.6.1",
     "backbone": "~1.1.0",
-    "underscore": "~1.5.2"
+    "underscore": "~1.5.2",
+    "url": "~0.7.9",
+    "path": "~0.4.9"
   }
 }
