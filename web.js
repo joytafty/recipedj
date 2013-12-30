@@ -66,7 +66,8 @@ var app = express.createServer();
 app.use(logfmt.requestLogger());
 
 app.get('/', function(req, res) {
-	res.sendfile(__dirname + '/index.html');	
+	res.sendfile(__dirname + '/index.html');		
+	console.log(__dirname);
 });
 app.get('/test', function(req,res){
 	res.sendfile(__dirname + '/templates/test.html');
