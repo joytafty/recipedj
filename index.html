@@ -35,6 +35,7 @@
   <!-- ========= -->
   <script type="text/javascript" src="static/js/filter.js"></script>
   <script type="text/javascript" src="static/js/food-table.js"></script>
+  <script type="text/javascript" src="static/js/parallel.js"></script>
     
   <!-- =============== -->
   <!-- Javascript code -->
@@ -44,15 +45,15 @@
     var dimensions = new Filter(); 
     var highlighter = new Selector(); 
 
-    //Food declared and specified in foods-table.js
+    //Foods JSON specified in foods-table.js
     dimensions.set({data: foods });
-
+    // List of all foods with data
     var columns = _(foods[0]).keys();
     var axes = _(columns).without('name', 'group');
 
-    console.log(columns);
+
     console.log(axes);
-    console.log(foods[0]);
+    console.log(foods.length);
   });
   </script>
 
