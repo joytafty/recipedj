@@ -67,9 +67,8 @@ var app = express();
 http.createServer(app);
 
 app.use(logfmt.requestLogger());
-
+app.use(express.static(__dirname + '/static'));
 app.get('/', function(req, res) {
-	console.log(__dirname);
 	res.sendfile(__dirname + '/index.html');		
 });
 app.get('/test', function(req,res){
