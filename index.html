@@ -35,8 +35,8 @@
   <!-- ========= -->
   <script type="text/javascript" src="static/js/filter.js"></script>
   <script type="text/javascript" src="static/js/food-table.js"></script>
-  <script type="text/javascript" src="static/js/parallel.js"></script>
   <script type="text/javascript" src="static/js/d3/d3.min.js"></script>
+  <script type="text/javascript" src="static/js/parallel.js"></script>
 
   <!-- =============== -->
   <!-- Javascript code -->
@@ -52,7 +52,7 @@
     var columns = _(foods[0]).keys();
     var axes = _(columns).without('name', 'group');
 
-
+    
     console.log(axes);
     console.log(foods.length);
   });
