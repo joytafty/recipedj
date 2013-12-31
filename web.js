@@ -71,6 +71,9 @@ app.use(express.static(__dirname + '/static'));
 app.get('/', function(req, res) {
 	res.sendfile(__dirname + '/index.html');		
 });
+app.get('/static/js/filter.js', function(req,res) {
+	res.sendfile(__dirname + '/static/js/filter.js');
+})
 app.get('/test', function(req,res){
 	console.log(__dirname);
 	res.sendfile(__dirname + '/templates/test.html');
