@@ -33,8 +33,8 @@ app.get('/static/js/food-table.js', function(req,res) {
 app.get('/static/js/parallel.js', function(req,res) {
 	res.sendfile(__dirname + '/static/js/parallel.js');
 });
-app.get('/static/js/d3/d3.js', function(req,res) {
-	res.sendfile(__dirname + '/static/js/d3/d3.js');
+app.get('/static/js/d3/d3.min.js', function(req,res) {
+	res.sendfile(__dirname + '/static/js/d3/d3.min.js');
 });
 
 
