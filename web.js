@@ -71,8 +71,12 @@ app.use(express.static(__dirname + '/static'));
 app.get('/', function(req, res) {
 	res.sendfile(__dirname + '/index.html');		
 });
-app.get('/static/css', function(req,res) {
-	res.sendfile(__dirname + '/static/css');
+// *** hard-coded static path
+app.get('/static/css/style.css', function(req,res) {
+	res.sendfile(__dirname + '/static/css/style.css');
+});
+app.get('/static/css/slick.grid.css', function(req,res) {
+	res.sendfile(__dirname + '/static/css/slick.grid.css');
 });
 app.get('/static/js/filter.js', function(req,res) {
 	res.sendfile(__dirname + '/static/js/filter.js');
