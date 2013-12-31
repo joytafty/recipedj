@@ -47,8 +47,12 @@
     //Food declared and specified in foods-table.js
     dimensions.set({data: foods });
 
-    console.log(dimensions);
-    console.log(highlighter);
+    var columns = _(foods[0]).keys();
+    var axes = _(columns).without('name', 'group');
+
+    console.log(columns);
+    console.log(axes);
+    console.log(foods[0]);
   });
   </script>
 
