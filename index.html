@@ -54,9 +54,40 @@
     var columns = _(foods[0]).keys();
     var axes = _(columns).without('name', 'group');
 
+  var foodgroups =
+      ["Dairy and Egg Products", /*"Spices and Herbs", "Baby Foods",*/ "Fats and Oils",
+       "Poultry Products", "Soups, Sauces, and Gravies", "Vegetables and Vegetable Products",
+       "Sausages and Luncheon Meats", "Breakfast Cereals", "Fruits and Fruit Juices",
+       "Nut and Seed Products", "Beverages", "Finfish and Shellfish Products",
+       "Legumes and Legume Products", "Baked Products", "Sweets", "Cereal Grains and Pasta",
+       "Fast Foods", "Meals, Entrees, and Sidedishes", "Snacks", /*"Ethnic Foods",*/ "Restaurant Foods"];
+    
+    var colors = {
+      "Dairy and Egg Products" : '#ff7f0e',
+      "Spices and Herbs" : '#aec7e8',
+      "Baby Foods" : '#555',
+      "Fats and Oils" : '#ffbb78',
+      "Poultry Products" : '#d62728',
+      "Soups, Sauces, and Gravies" : '#98df8a',
+      "Vegetables and Vegetable Products" : '#2ca02c',
+      "Sausages and Luncheon Meats" : '#ff9896',
+      "Breakfast Cereals" : '#9467bd',
+      "Fruits and Fruit Juices" : '#c5b0d5',
+      "Nut and Seed Products" : '#8c564b',
+      "Beverages" : '#c49c94',
+      "Finfish and Shellfish Products" : '#e377c2',
+      "Legumes and Legume Products" : '#f7b6d2',
+      "Baked Products" : '#7f7f7f',
+      "Sweets" : '#c7c7c7',
+      "Cereal Grains and Pasta" : ' #bcbd22',
+      "Fast Foods" : '#dbdb8d',
+      "Meals, Entrees, and Sidedishes" : '#17becf',
+      "Snacks" : '#9edae5',
+      "Ethnic Foods" : '#e7ba52',
+      "Restaurant Foods" : '#1f77b4'
+    };
 
-    console.log(axes);
-    console.log(foods.length);
+    var pc = parallel(dimensions);
   });
   </script>
 
