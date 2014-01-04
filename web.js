@@ -46,6 +46,12 @@ app.get('/static/js/d3/d3.layout.js', function(req,res) {
 	res.sendfile(__dirname + '/static/js/d3/d3.layout.js');
 });
 
+app.get('/static/js/slickgrid/slick.core.js', function(req,res) {
+	res.sendfile(__dirname + '/static/js/slickgrid/slick.core.js');
+});
+app.get('/static/js/slickgrid/slick.grid.js', function(req,res) {
+	res.sendfile(__dirname + '/static/js/slickgrid/slick.grid.js');
+});
 app.get('/static/js/slickgrid/slick.dataview.js', function(req,res) {
 	res.sendfile(__dirname + '/static/js/slickgrid/slick.dataview.js');
 });
