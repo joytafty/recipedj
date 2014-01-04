@@ -52,6 +52,9 @@ app.get('/static/js/slickgrid/slick.core.js', function(req,res) {
 app.get('/static/js/slickgrid/slick.grid.js', function(req,res) {
 	res.sendfile(__dirname + '/static/js/slickgrid/slick.grid.js');
 });
+app.get('/static/js/slickgrid/slick.pager.js', function(req,res) {
+	res.sendfile(__dirname + '/static/js/slickgrid/slick.pager.js');
+});
 app.get('/static/js/slickgrid/slick.dataview.js', function(req,res) {
 	res.sendfile(__dirname + '/static/js/slickgrid/slick.dataview.js');
 });
