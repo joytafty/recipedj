@@ -58,6 +58,10 @@ app.get('/static/js/slickgrid/slick.pager.js', function(req,res) {
 app.get('/static/js/slickgrid/slick.dataview.js', function(req,res) {
 	res.sendfile(__dirname + '/static/js/slickgrid/slick.dataview.js');
 });
+app.get('/static/js/slickgrid/jquery.event.drag-2.0.min.js', function(req,res) {
+	res.sendfile(__dirname + '/static/js/slickgrid/jquery.event.drag-2.0.min.js');
+});
+
 
 
 
