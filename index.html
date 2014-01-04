@@ -11,6 +11,13 @@
   <!-- ========= -->
 
   <div id="container">Loading...</div>
+  <div id="main">
+    <div class="widgets">
+      <!-- <a href="#" id="export_selected" class="button green filter_control">Export</a> -->
+      <a href="#" id="remove_selected" class="button red filter_control">Remove</a>
+      <a href="#" id="keep_selected" class="button green filter_control">Keep</a>
+    </div>
+  </div>
   <div id="parallel">place holder for Parallel Coordinates</div>
   <div id="myGrid">place holder for grid</div>
 
@@ -110,6 +117,44 @@
     slicky.update(); 
     pc.render();
 
+    dimensions.bind('change:filtered', function(){
+      var data = dimensions.get('filtered');
+      var data_size = _(data).size();
+      var filtered_size = _(filtered).size();
+
+    highligher.bind('change:selected', function(){
+      var highlighted = this.get('selected');
+      pc.highlight(highlighted);
+    });
+
+    $('#remove_selected').click(function() {
+      dimensions.outliers(); 
+      pc.update(dimensions.get('data'));
+      pc.render(); 
+      dimensions.trigger('change:filtered');
+      return false;
+    });
+
+    $('#keep_selected').click(function() {
+      dimensions.inliers();
+      pc.update(dimensions.get('data'));
+      pc.render();
+      dimensions.trigger('changed:filtered');
+      return false;
+    });
+
+    $('#parallel').resize(function() {
+      // vertical full screen
+      pc.render();
+      var val = $('#line_opacity').val();
+      $('#parallel .foreground path').css('stroke-opacity', val.toString());
+    });
+    
+    $('#parallel').resizable({
+      handles: 's',
+      resize: function () { return false; }
+    });
+    
   });
   </script>
 
