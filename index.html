@@ -86,8 +86,11 @@
       "Ethnic Foods" : '#e7ba52',
       "Restaurant Foods" : '#1f77b4'
     };
-
+    // Parallel coordinate plot
     var pc = parallel(dimensions);
+    var parallel_height = $(window).height() - 64 - 12 - 120 - 320;
+    alert('plot-height: ' + parallel_height + 'window-height: + ' $(window).height());
+
   });
   </script>
 
