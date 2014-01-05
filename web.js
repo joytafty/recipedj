@@ -51,6 +51,12 @@ app.get('/static/js/d3/d3.csv.js', function(req,res) {
 app.get('/static/js/d3/d3.layout.js', function(req,res) {
 	res.sendfile(__dirname + '/static/js/d3/d3.layout.js');
 });
+app.get('/static/js/jquery-ui-1.8.16.custom.min.js', function(req,res) {
+	res.sendfile(__dirname + '/static/js/jquery-ui-1.8.16.custom.min.js');
+});
+app.get('/static/js/pie.js', function(req,res) {
+	res.sendfile(__dirname + '/static/js/pie.js');
+});
 app.get('/static/js/slickgrid/slick.core.js', function(req,res) {
 	res.sendfile(__dirname + '/static/js/slickgrid/slick.core.js');
 });
@@ -66,8 +72,6 @@ app.get('/static/js/slickgrid/slick.dataview.js', function(req,res) {
 app.get('/static/js/slickgrid/jquery.event.drag-2.0.min.js', function(req,res) {
 	res.sendfile(__dirname + '/static/js/slickgrid/jquery.event.drag-2.0.min.js');
 });
-
-
 
 
 app.get('/test', function(req,res){
