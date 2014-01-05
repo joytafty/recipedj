@@ -33,6 +33,12 @@ app.get('/static/js/food-table.js', function(req,res) {
 app.get('/static/js/parallel.js', function(req,res) {
 	res.sendfile(__dirname + '/static/js/parallel.js');
 });
+app.get('/static/js/parallel-coordinates.js', function(req,res) {
+	res.sendfile(__dirname + '/static/js/parallel-coordinates.js');
+});
+app.get('/static/js/parallel-coordinates-veggie.j', function(req,res) {
+	res.sendfile(__dirname + '/static/js/parallel-coordinates-veggie.js');
+});
 app.get('/static/js/grid.js', function(req,res) {
 	res.sendfile(__dirname + '/static/js/grid.js');
 });
@@ -45,7 +51,6 @@ app.get('/static/js/d3/d3.csv.js', function(req,res) {
 app.get('/static/js/d3/d3.layout.js', function(req,res) {
 	res.sendfile(__dirname + '/static/js/d3/d3.layout.js');
 });
-
 app.get('/static/js/slickgrid/slick.core.js', function(req,res) {
 	res.sendfile(__dirname + '/static/js/slickgrid/slick.core.js');
 });
