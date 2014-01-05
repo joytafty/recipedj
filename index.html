@@ -13,7 +13,7 @@
   <div id="container">Loading...</div>
   <div id="main">
     <div class="widgets">
-      <!-- <a href="#" id="export_selected" class="button green filter_control">Export</a> -->
+      <a href="#" id="export_selected" class="button green filter_control">Export</a>
       <a href="#" id="remove_selected" class="button red filter_control">Remove</a>
       <a href="#" id="keep_selected" class="button green filter_control">Keep</a>
     </div>
@@ -99,8 +99,13 @@
       "Ethnic Foods" : '#e7ba52',
       "Restaurant Foods" : '#1f77b4'
     };
+
+    _(foodgroups).each(function(group) {
+      $('#legend').append("<div class='item'><div class='color' style='background: " + colors[group] + "';></div><div class='key'>" + group + "</div></div>");
+    });
+
     // Parallel coordinate plot
-    var pc = parallel(dimensions);
+    var pc = parallel(dimensions, colors);
     var parallel_height = $(window).height() - 64 - 12 - 120 - 320;
     $('#parallel').css({
       height: parallel_height + 'px',
@@ -121,6 +126,9 @@
       var data = dimensions.get('filtered');
       var data_size = _(data).size();
       var filtered_size = _(filtered).size();
+
+      var opacity = _([2/Math.pow(filtered_size,0.37), 100]).min();
+      $('#line_opacity').val(opacity).change();
     )};
 
     highligher.bind('change:selected', function(){
@@ -143,6 +151,38 @@
       dimensions.trigger('changed:filtered');
       return false;
     });
+
+    $('#export_selected').click(function() {
+      var data = dimensions.get('filtered');
+      var keys = _.keys(data[0]);
+      var csv = _(keys).map(function(d) { return '"' + addslashes(d) + '"'; }).join(",");
+      _(data).each(function(row) {
+        csv += "\n";
+        csv += _(keys).map(function(k) {
+          var val = row[k];
+          if (_.isString(val)) {
+            return '"' + addslashes(val) + '"';
+          }
+          if (_.isNumber(val)) {
+            return val;
+          }
+          if (_.isNull(val)) {
+            return "";
+          }
+        }).join(",");
+      });
+      var uriContent = "data:application/octet-stream," + encodeURIComponent(csv);
+      var myWindow = window.open(uriContent, "Nutrient CSV");
+      myWindow.focus();
+      return false;
+    });
+
+    $('#line_opacity').change(function() {
+      var val = $(this).val();
+      $('#parallel .foreground path').css('stroke-opacity', val.toString());
+      $('#opacity_level').html((Math.round(val*10000)/100) + "%");
+    });
+
 
     $('#parallel').resize(function() {
       // vertical full screen
