@@ -121,6 +121,7 @@
       var data = dimensions.get('filtered');
       var data_size = _(data).size();
       var filtered_size = _(filtered).size();
+    )};
 
     highligher.bind('change:selected', function(){
       var highlighted = this.get('selected');
@@ -154,8 +155,6 @@
       handles: 's',
       resize: function () { return false; }
     });
-    
-  });
   </script>
 
   <script type="text/javascript">
