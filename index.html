@@ -56,18 +56,20 @@
   <!-- =============== -->
   <!-- Javascript code -->
   <!-- =============== -->
-  <script type='text/javascript'>
+  <script type="text/javascript">
+  
   $(function() {
-    var dimensions = new Filter(); 
-    var highlighter = new Selector(); 
+  
+    //Define in filter.js
+    var dimensions = new Filter();
+    var highlighter = new Selector();
 
-    //Foods JSON specified in foods-table.js
     dimensions.set({data: foods });
-    // List of all foods with data
+
     var columns = _(foods[0]).keys();
     var axes = _(columns).without('name', 'group');
 
-  var foodgroups =
+    var foodgroups =
       ["Dairy and Egg Products", /*"Spices and Herbs", "Baby Foods",*/ "Fats and Oils",
        "Poultry Products", "Soups, Sauces, and Gravies", "Vegetables and Vegetable Products",
        "Sausages and Luncheon Meats", "Breakfast Cereals", "Fruits and Fruit Juices",
@@ -99,59 +101,70 @@
       "Ethnic Foods" : '#e7ba52',
       "Restaurant Foods" : '#1f77b4'
     }
-
+    
     _(foodgroups).each(function(group) {
       $('#legend').append("<div class='item'><div class='color' style='background: " + colors[group] + "';></div><div class='key'>" + group + "</div></div>");
     });
 
-    // Parallel coordinate plot
     var pc = parallel(dimensions, colors);
-    var parallel_height = $(window).height() - 64 - 12 - 120 - 320;
-    $('#parallel').css({
-      height: parallel_height + 'px',
-      weight: $(window).width() + 'px'
-    });
+    var pie = piegroups(foods, foodgroups, colors, 'group');
+    var totals = pietotals(
+      ['in', 'out'],
+      [_(foods).size(), 0]
+    );
 
     var slicky = new grid({
       model: dimensions,
-      selector: highlighter, 
+      selector: highlighter,
       width: $('body').width(),
       columns: columns
     });
-
-    slicky.update(); 
+    
+    // vertical full screen
+    var parallel_height = $(window).height() - 64 - 12 - 120 - 320;
+    if (parallel_height < 120) parallel_height = 120;  // min height
+    if (parallel_height > 340) parallel_height = 340;  // max height
+    $('#parallel').css({
+        height: parallel_height + 'px',
+        width: $(window).width() + 'px'
+    });
+    
+    slicky.update();
     pc.render();
 
-    dimensions.bind('change:filtered', function(){
-      var data = dimensions.get('filtered');
+    dimensions.bind('change:filtered', function() {
+      var data = dimensions.get('data');
+      var filtered = dimensions.get('filtered');
       var data_size = _(data).size();
       var filtered_size = _(filtered).size();
-
+      pie.update(filtered);
+      totals.update([filtered_size, data_size - filtered_size]);
+      
       var opacity = _([2/Math.pow(filtered_size,0.37), 100]).min();
       $('#line_opacity').val(opacity).change();
-    )};
-
-    highligher.bind('change:selected', function(){
+    });
+    
+    highlighter.bind('change:selected', function() {
       var highlighted = this.get('selected');
       pc.highlight(highlighted);
     });
 
     $('#remove_selected').click(function() {
-      dimensions.outliers(); 
+      dimensions.outliers();
       pc.update(dimensions.get('data'));
-      pc.render(); 
+      pc.render();
       dimensions.trigger('change:filtered');
       return false;
     });
-
+    
     $('#keep_selected').click(function() {
       dimensions.inliers();
       pc.update(dimensions.get('data'));
       pc.render();
-      dimensions.trigger('changed:filtered');
+      dimensions.trigger('change:filtered');
       return false;
     });
-
+    
     $('#export_selected').click(function() {
       var data = dimensions.get('filtered');
       var keys = _.keys(data[0]);
@@ -182,8 +195,7 @@
       $('#parallel .foreground path').css('stroke-opacity', val.toString());
       $('#opacity_level').html((Math.round(val*10000)/100) + "%");
     });
-
-
+    
     $('#parallel').resize(function() {
       // vertical full screen
       pc.render();
@@ -195,6 +207,17 @@
       handles: 's',
       resize: function () { return false; }
     });
+    
+    $('#myGrid').resizable({
+      handles: 's'
+    });
+
+    function addslashes( str ) {
+        return (str+'').replace(/([\\"'])/g, "\\$1").replace(/\0/g, "\\0");
+    };
+  
+  });
+
   </script>
 
   <script type="text/javascript">
